@@ -27,7 +27,7 @@ export default {
   computed:{
     routeName(){
         const route = this.$route
-        const { meta, path } = route
+        const { meta} = route
         return meta.name
     }
   },

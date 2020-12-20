@@ -4,6 +4,13 @@ import Register from '@/views/Register'
 import Login from "@/views/Login";
 import Home from "@/views/Home"
 import User from "@/views/User";
+import Trade from "@/views/Trade";
+import Storage from "@/views/Storage";
+import Comment from "@/views/Comment";
+import Suppiler from "@/views/Supplier";
+import StockRecord from "@/views/StockRecord";
+import StockCost from "@/views/StockCost";
+import StockCount from "@/views/StockCount";
 
 
 Vue.use(Router)
@@ -30,19 +37,69 @@ const routes = [{
         name: 'home',
         component: Home,
         meta: {
-            title: '主页',
+            title: '首页',
             name: '首页'
         },
 
-        children: [{
+        children: [
+            {
             path: '/user',
             component: User,
             meta: {
-                name: '用户信息'
+                name: '进货信息'
             }
-
-        }]
-
+        }
+        ,
+        {
+            path: '/trade',
+            component: Trade,
+            meta: {
+                name: '成交额'
+            }
+        },
+        {
+            path: '/storage',
+            component: Storage,
+            meta: {
+                name: '商品库存'
+            }
+        },
+        {
+            path:"/comment",
+            component:Comment,
+            meta:{
+                name:"商品评论"
+            }
+        },
+        {
+            path:"/supplier",
+            component:Suppiler,
+            meta:{
+                name:"供应商信息"
+            }
+        },
+        {
+            path:"/stockRecord",
+            component:StockRecord,
+            meta:{
+                name:"进货记录"
+            }
+        },
+        {
+            path:"/stockCost",
+            component:StockCost,
+            meta:{
+                name:"进货成本"
+            }
+        },
+        {
+            path:"/stockCount",
+            component:StockCount,
+            meta:{
+                name:"进货输目"
+            }
+        }
+    ]
     }
 
 ]

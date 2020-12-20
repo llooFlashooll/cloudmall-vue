@@ -10,7 +10,6 @@
           <Navbar/>
 
           <div v-show="routeName == '首页'" class="home_container">
-            我是谁？妙蛙种子！
           </div>    
 
           <!-- 路由占位符-->
@@ -31,7 +30,7 @@ export default {
   computed:{
     routeName(){
         const route = this.$route
-        const { meta, path } = route
+        const { meta} = route
         return meta.name
     }
   },
