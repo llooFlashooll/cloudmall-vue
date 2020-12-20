@@ -59,10 +59,18 @@ export default {
         if(this.value.length>0){
           console.log(this.value);
           this.tableData=[];
-          var comment=["一日三餐没烦恼","就吃老八秘制小汉堡","臭豆腐、腐乳加柠檬"];
-          for(var i=0;i<comment.length;i++){
-              this.tableData.push({id:i+1,comment:comment[i]});
-          }
+          this.$axios.get()
+        .then(res=>{
+            console.log(res.data);
+            if(res.data.icon!=null){
+              for(var i=0;i<res.data.length;i++){
+                this.tableData.push({id:i+1,comment:"hello world"});
+              }
+            }
+        })
+        .catch(err=>{
+          console.log(err);
+        })
         }
       }
   }

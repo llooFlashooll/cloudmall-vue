@@ -56,10 +56,20 @@ export default {
   methods:{
     chooseDate(){
         if(this.date.length>0){
-        console.log(this.date.split("-"));
-        var newCount=1;
-        this.tableData.push({date:this.date,count:newCount});
-        console.log(this.tableData);
+        var dateArray=this.date.split("-");
+        this.$axios.get("http://mock-api.com/5g7AeqKe.mock/hive2/getBillCount?date="+dateArray[0]+"/"+dateArray[1]+"/"+dateArray[2])
+        .then(res=>{
+            console.log(res.data);
+            if(res.data.icon!=null){
+            this.tableData.push({date:this.date,count:res.data.icon});
+            }
+            else{
+              this.tableData.push({date:this.date,count:0});
+            }
+        })
+        .catch(err=>{
+          console.log(err);
+        })
         }
     }
   }

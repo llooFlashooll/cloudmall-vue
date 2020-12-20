@@ -69,7 +69,19 @@ export default {
   methods:{
     search(){
         if(this.date.length>0&&this.value.length>0){
-        this.tableData.push({sellerId:this.value,year:this.date,cost:1});
+          this.$axios.get()
+          .then(res=>{
+            console.log(res.data);
+            if(res.data.icon!=null){
+              //this.tableData=[];
+            }
+            else{
+                this.tableData.push({sellerId:this.value,year:this.date,cost:0});
+            }
+          })
+          .catch(err=>{
+          console.log(err);
+          })
         }
     }
   }

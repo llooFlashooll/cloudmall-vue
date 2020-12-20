@@ -36,7 +36,7 @@
                 stripe
                 style="width: 100%">
             <el-table-column
-                prop="sellerId"d
+                prop="sellerId"
                 label="店铺Id">
             </el-table-column>
             <el-table-column
@@ -49,7 +49,6 @@
             </el-table-column>
             </el-table>
       </el-col>
-
     </el-row>
   </div>
 </template>
@@ -68,11 +67,19 @@ export default {
   methods:{
     search(){
         if(this.value_supplier.length>0&&this.value_seller.length>0){
-        this.tableData.push({
-            sellerId:this.value_seller,
-            supplierId:this.value_supplier,
-            times:1}
-            );
+          this.$axios.get()
+          .then(res=>{
+            console.log(res.data);
+            if(res.data.icon!=null){
+              this.tableData.push({sellerId:this.value_seller,supplierId:this.value_supplier,times:0});
+            }
+            else{
+              this.tableData.push({sellerId:this.value_seller,supplierId:this.value_supplier,times:0});
+            }
+          })
+          .catch(err=>{
+          console.log(err);
+          })
         }
     }
   }

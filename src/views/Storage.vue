@@ -61,23 +61,19 @@ export default {
       search(){
         if(this.value.length>0){
           console.log(this.value);
-          this.tableData=[
-              {
-                  id:1,
-                  name:"臭豆腐",
-                  num:1
-              },
-              {
-                  id:2,
-                  name:"腐乳",
-                  num:1
-              },
-              {
-                  id:3,
-                  name:"柠檬",
-                  num:3
-              }
-              ]
+          this.$axios.get()
+          .then(res=>{
+            console.log(res.data);
+            if(res.data.icon!=null){
+              //this.tableData=
+            }
+            else{
+              this.tableData=[]
+            }
+          })
+          .catch(err=>{
+            console.log(err);
+          })
         }
       }
   }

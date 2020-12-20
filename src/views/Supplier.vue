@@ -57,7 +57,19 @@ export default {
       search(){
           if(this.value.length>0){
           console.log(this.value);
-          this.tableData.push({country:this.value,supplier_count:1});
+          this.$axios.get()
+          .then(res=>{
+            console.log(res.data);
+            if(res.data.icon!=null){
+              //this.tableData.push({country:this.value,supplier_count:1});
+            }
+            else{
+              this.tableData.push({country:this.value,supplier_count:0});
+            }
+          })
+          .catch(err=>{
+            console.log(err);
+          })
           }
       }
   }
