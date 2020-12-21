@@ -5,6 +5,11 @@
     <el-menu router :default-active="activeIndex" :collapse="this.$store.state.sideBarCollapse">
       <img src="../assets/tongji_logo.png" class="avatar"/>
 
+      <el-menu-item index="/">
+        <i class="el-icon-menu"></i>
+        <a slot="title">首页</a>
+      </el-menu-item>
+
       <el-menu-item index="/trade">
         <i class="el-icon-s-goods"></i>
         <a slot="title">成交额</a>

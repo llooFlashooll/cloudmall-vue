@@ -7,11 +7,13 @@ import store from './store'
 import axios from 'axios'
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+import echarts from 'echarts'
 
 import './assets/css/global.css'
 
 
 Vue.prototype.$axios = axios
+Vue.prototype.$echarts = echarts
 Vue.use(ElementUI);
 Vue.use(mavonEditor)
 Vue.config.productionTip = false
