@@ -52,22 +52,31 @@ export default {
   data(){
     return{
         value: '',
-        tableData: []
+        tableData: [],
+        resData: []
     }
   },
   created() {
   },
   methods:{
       search(){
-        if(this.value.length>0){
-          this.table=[];
+        this.tableData=[]
+        if(this.value.length <= 0) {
+          alert("请输入正确的查询条件");
+        }
+
+        if(this.value.length > 0){
           console.log(this.value);
-          this.$axios.get("/getStock?salerId="+this.value)
+          this.$axios.get("/getStock?salerId=" + this.value)
           .then(res=>{
             console.log(res.data);
             if(res.data.length>0){
               for(var i=0;i<res.data.length;i++){
-                this.tableData.push({id:res.data[i].stock.product_id,num:res.data[i].stock.in_num,price:res.data[i].stock.price});
+                this.tableData.push({
+                  id: res.data[i]["stock.product_id"],
+                  num: res.data[i]["stock.in_num"],
+                  price: res.data[i]["stock.price"]
+                });
               }
             }
             else{

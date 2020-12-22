@@ -37,7 +37,7 @@
                 stripe
                 style="width: 100%">
             <el-table-column
-                prop="sellerId"
+                prop="salerId"
                 label="店铺Id">
             </el-table-column>
             <el-table-column
@@ -45,7 +45,7 @@
                 label="年份">
             </el-table-column>
             <el-table-column
-                prop="cost"
+                prop="count"
                 label="进货成本">
             </el-table-column>
             </el-table>
@@ -61,28 +61,43 @@ export default {
     return{
         date: '',
         value:'',
-        tableData: []
+        tableData: [],
+        resData: []
     }
   },
   created() {
   },
   methods:{
     search(){
-        if(this.date.length>0&&this.value.length>0){
-          this.$axios.get()
-          .then(res=>{
-            console.log(res.data);
-            if(res.data.icon!=null){
-              //this.tableData=[];
-            }
-            else{
-                this.tableData.push({sellerId:this.value,year:this.date,cost:0});
-            }
-          })
-          .catch(err=>{
-          console.log(err);
-          })
-        }
+      this.tableData=[]
+      if(this.value.length <= 0) {
+        alert("请输入正确的查询条件");
+      }
+
+      if(this.value.length > 0){
+        this.$axios.get("/getCost?salerId=" + this.value)
+        .then(res=>{
+          console.log(res.data);
+          this.resData = res.data;
+
+          // 新建对象数组，转换key值，注意js传值为对象传值
+          for(var i=0; i< this.resData.length; i++) {
+            var temp = {};
+            temp.salerId = this.value;
+            temp.year = "2019";
+            temp.count = this.resData[i]["c0"];
+
+            this.tableData.push(temp);
+
+          }
+          console.log("tableData是：");
+          console.log(this.tableData);
+
+        })
+        .catch(err=>{
+        console.log(err);
+        })
+      }
     }
   }
 }

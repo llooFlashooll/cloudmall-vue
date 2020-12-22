@@ -48,7 +48,8 @@ export default {
   data(){
     return{
         date: '',
-        tableData: []
+        tableData: [],
+        resData: []
     }
   },
   created() {
@@ -57,15 +58,31 @@ export default {
     chooseDate(){
         if(this.date.length>0){
         var dateArray=this.date.split("-");
-        this.$axios.get("http://mock-api.com/5g7AeqKe.mock/hive2/getBillCount?date="+dateArray[0]+"/"+dateArray[1]+"/"+dateArray[2])
+        this.$axios.get("/getBillCount?date="+dateArray[0]+"/"+dateArray[1]+"/"+dateArray[2])
         .then(res=>{
             console.log(res.data);
-            if(res.data.icon!=null){
-            this.tableData.push({date:this.date,count:res.data.icon});
+            this.resData = res.data;
+
+            // if(res.data.icon!=null){
+            // this.tableData.push({date:this.date,count:res.data.icon});
+            // }
+            // else{
+            //   this.tableData.push({date:this.date,count:0});
+            // }
+
+            // 新建对象数组，转换key值，注意js传值为对象传值
+            for(var i=0; i< this.resData.length; i++) {
+              var temp = {};
+              temp.date = this.date;
+              temp.count = this.resData[i]["c0"];
+
+              this.tableData.push(temp);
+
             }
-            else{
-              this.tableData.push({date:this.date,count:0});
-            }
+            console.log("tableData是：");
+            console.log(this.tableData);
+
+
         })
         .catch(err=>{
           console.log(err);

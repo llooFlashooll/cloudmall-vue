@@ -29,7 +29,7 @@
                 stripe
                 style="width: 100%">
             <el-table-column
-                prop="id"
+                prop="productId"
                 label=""
                 width="50">
             </el-table-column>
@@ -49,24 +49,44 @@ export default {
   data(){
     return{
         value: '',
-        tableData: []
+        tableData: [],
+        resData: []
     }
   },
   created() {
   },
   methods:{
       search(){
-        if(this.value.length>0){
+        this.tableData=[]
+        if(this.value.length <= 0) {
+          alert("请输入正确的查询条件");
+        }
+
+        if(this.value.length > 0){
           console.log(this.value);
-          this.tableData=[];
-          this.$axios.get()
+          this.$axios.get("/getComment?productId=" + this.value)
         .then(res=>{
             console.log(res.data);
-            if(res.data.icon!=null){
-              for(var i=0;i<res.data.length;i++){
-                this.tableData.push({id:i+1,comment:"hello world"});
-              }
-            }
+            this.resData = res.data;
+            // if(res.data.icon!=null){
+            //   for(var i=0;i<res.data.length;i++){
+            //     this.tableData.push({id:i+1,comment:"hello world"});
+            //   }
+            // }
+
+          // 新建对象数组，转换key值，注意js传值为对象传值
+          for(var i=0; i< this.resData.length; i++) {
+            var temp = {};
+            temp.productId = this.value;
+            temp.comment = this.resData[i]["c0"];
+
+            this.tableData.push(temp);
+
+          }
+          console.log("tableData是：");
+          console.log(this.tableData);
+
+
         })
         .catch(err=>{
           console.log(err);

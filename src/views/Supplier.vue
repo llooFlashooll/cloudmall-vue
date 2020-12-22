@@ -29,11 +29,11 @@
                 stripe
                 style="width: 100%">
             <el-table-column
-                prop="country"
+                prop="providerCountry"
                 label="国家名称">
             </el-table-column>
             <el-table-column
-                prop="supplier_count"
+                prop="count"
                 label="供应商数量">
             </el-table-column>
             </el-table>
@@ -48,29 +48,44 @@ export default {
   data(){
     return{
         value: '',
-        tableData: []
+        tableData: [],
+        resData: []
     }
   },
   created() {
   },
   methods:{
       search(){
-          if(this.value.length>0){
-          console.log(this.value);
-          this.$axios.get()
-          .then(res=>{
-            console.log(res.data);
-            if(res.data.icon!=null){
-              //this.tableData.push({country:this.value,supplier_count:1});
-            }
-            else{
-              this.tableData.push({country:this.value,supplier_count:0});
-            }
-          })
-          .catch(err=>{
-            console.log(err);
-          })
+        this.tableData=[]
+        if(this.value.length <= 0) {
+          alert("请输入正确的查询条件");
+        }
+
+        if(this.value.length > 0) {
+        console.log(this.value);
+        this.$axios.get("/getCountryNum?providerCountry=" + this.value)
+        .then(res=>{
+          console.log(res.data);
+          this.resData = res.data;
+
+          // 新建对象数组，转换key值，注意js传值为对象传值
+          for(var i=0; i< this.resData.length; i++) {
+            var temp = {};
+            temp.providerCountry = this.value;
+            temp.count = this.resData[i]["c0"];
+
+            this.tableData.push(temp);
+
           }
+          console.log("tableData是：");
+          console.log(this.tableData);
+
+
+        })
+        .catch(err=>{
+          console.log(err);
+        })
+        }
       }
   }
 }

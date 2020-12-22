@@ -30,7 +30,7 @@
         </el-menu-item>
         <el-menu-item index="/stockCount">
             <i class="el-icon-shopping-cart-full"></i>
-            <a slot="title">进货输目</a>
+            <a slot="title">进货数目</a>
         </el-menu-item>
         <el-menu-item index="/supplier">
             <i class="el-icon-shopping-cart-full"></i>

@@ -36,15 +36,15 @@
                 stripe
                 style="width: 100%">
             <el-table-column
-                prop="sellerId"
+                prop="salerId"
                 label="店铺Id">
             </el-table-column>
             <el-table-column
-                prop="supplierId"
+                prop="providerId"
                 label="进货商Id">
             </el-table-column>
             <el-table-column
-                prop="times"
+                prop="count"
                 label="进货次数">
             </el-table-column>
             </el-table>
@@ -59,28 +59,57 @@ export default {
     return{
         value_supplier: '',
         value_seller:'',
-        tableData: []
+        tableData: [],
+        resData: []
     }
   },
   created() {
   },
   methods:{
     search(){
-        if(this.value_supplier.length>0&&this.value_seller.length>0){
-          this.$axios.get()
-          .then(res=>{
-            console.log(res.data);
-            if(res.data.icon!=null){
-              this.tableData.push({sellerId:this.value_seller,supplierId:this.value_supplier,times:0});
-            }
-            else{
-              this.tableData.push({sellerId:this.value_seller,supplierId:this.value_supplier,times:0});
-            }
-          })
-          .catch(err=>{
-          console.log(err);
-          })
-        }
+      this.tableData=[]
+      if(this.value_supplier.length<=0) {
+        alert("进货商id不能为空");
+      }
+      if(this.value_seller.length<=0) {
+        alert("店铺id不能为空");
+      }
+
+      if(this.value_supplier.length>0 && this.value_seller.length>0){
+        this.$axios.get("/getImportNum", {
+          params: { salerId: this.value_seller,
+          providerId: this.value_supplier
+          }})
+        .then(res=>{
+          console.log(res.data);
+          // if(res.data.icon!=null){
+          //   this.tableData.push({sellerId:this.value_seller,supplierId:this.value_supplier,times:0});
+          // }
+          // else{
+
+          // }
+          
+          // 应当有检测是否获取成功，再push
+          this.resData = res.data;
+
+          // 新建对象数组，转换key值，注意js传值为对象传值
+          for(var i=0; i< this.resData.length; i++) {
+            var temp = {};
+            temp.salerId = this.value_seller;
+            temp.providerId = this.value_supplier;
+            temp.count = this.resData[i]["c0"];
+
+            this.tableData.push(temp);
+
+          }
+          console.log("tableData是：");
+          console.log(this.tableData);
+
+        })
+        .catch(err=>{
+        console.log(err);
+        })
+      }
     }
   }
 }
