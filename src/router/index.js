@@ -42,72 +42,70 @@ const routes = [{
             name: '首页'
         },
 
-        children: [
+        children: [{
+                path: '/user',
+                component: User,
+                meta: {
+                    name: '进货信息'
+                }
+            },
             {
-            path: '/user',
-            component: User,
-            meta: {
-                name: '进货信息'
+                path: '/trade',
+                component: Trade,
+                meta: {
+                    name: '成交额'
+                }
+            },
+            {
+                path: '/storage',
+                component: Storage,
+                meta: {
+                    name: '商品库存'
+                }
+            },
+            {
+                path: "/comment",
+                component: Comment,
+                meta: {
+                    name: "商品评论"
+                }
+            },
+            {
+                path: "/supplier",
+                component: Suppiler,
+                meta: {
+                    name: "供应商信息"
+                }
+            },
+            {
+                path: "/stockRecord",
+                component: StockRecord,
+                meta: {
+                    name: "进货记录"
+                }
+            },
+            {
+                path: "/stockCost",
+                component: StockCost,
+                meta: {
+                    name: "进货成本"
+                }
+            },
+            {
+                path: "/stockCount",
+                component: StockCount,
+                meta: {
+                    name: "进货输目"
+                }
+            },
+            {
+                path: "/chart",
+                component: Chart,
+                meta: {
+                    name: "速率比较图"
+                }
             }
-        }
-        ,
-        {
-            path: '/trade',
-            component: Trade,
-            meta: {
-                name: '成交额'
-            }
-        },
-        {
-            path: '/storage',
-            component: Storage,
-            meta: {
-                name: '商品库存'
-            }
-        },
-        {
-            path:"/comment",
-            component:Comment,
-            meta:{
-                name:"商品评论"
-            }
-        },
-        {
-            path:"/supplier",
-            component:Suppiler,
-            meta:{
-                name:"供应商信息"
-            }
-        },
-        {
-            path:"/stockRecord",
-            component:StockRecord,
-            meta:{
-                name:"进货记录"
-            }
-        },
-        {
-            path:"/stockCost",
-            component:StockCost,
-            meta:{
-                name:"进货成本"
-            }
-        },
-        {
-            path:"/stockCount",
-            component:StockCount,
-            meta:{
-                name:"进货输目"
-            }
-        },
-        {
-            path:"/chart",
-            component:Chart,
-            meta:{
-                name:"速率比较图"
-            }
-        }
-    ]
+        ]
     }
 
 ]

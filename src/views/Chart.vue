@@ -4,10 +4,10 @@
 
     <el-row :gutter="20">
 
-     <div class="Echarts">
-            <div class="charts" id="table1" style="width: 600px;height:400px;"></div>
-            <div class="charts" id="table2" style="width: 600px;height:400px;"></div>
-          </div>
+    <div class="Echarts">
+		<div class="charts" id="table1" style="width: 600px;height:400px;"></div>
+		<div class="charts" id="table2" style="width: 600px;height:400px;"></div>
+    </div>
 
     </el-row>
   </div>
@@ -33,18 +33,18 @@ export default {
 			},
 			tooltip:{},
 			legend:{
-			data:['查询速率']
+				data:['查询速率']
 			},
 			xAxis:{
-			data:["1w数据量","25w数据量"]
+				data:["1w数据量","25w数据量"]
 			},
 			yAxis:{},
 			series:[{
-			name:'查询速率',
-			type:'bar',
-			data:[5, 20]
-			}]
-		};
+				name:'查询速率',
+				type:'bar',
+				data:[5, 20]
+				}]
+			};
 		var option2={
 			title:{
 			text:'商品评论查询效率'
@@ -74,16 +74,6 @@ export default {
 </script>
 
 <style scoped>
-
-.user_card {
-  margin-top: 10px;
-  margin-left: 10px;
-}
-
-.profile_card {
-  margin-top: 10px;
-  margin-right: 10px;
-}
 
 .Echarts{
   width:100%;

@@ -1,11 +1,11 @@
 <template>
 
-  <div class="user_container">
+  <div class="stockcost_container">
 
     <el-row :gutter="20">
 
       <el-col :span="6" :xs="24">
-        <el-card class="user_card">
+        <el-card>
           <div>
             <el-avatar src="https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif?imageView2/1/w/80/h/80" />
           </div>
@@ -90,13 +90,10 @@ export default {
 
 <style scoped>
 
-.user_card {
+.stockcost_container {
   margin-top: 10px;
   margin-left: 10px;
-}
-
-.profile_card {
-  margin-top: 10px;
   margin-right: 10px;
 }
+
 </style>
