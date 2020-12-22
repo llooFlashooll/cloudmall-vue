@@ -5,7 +5,7 @@
     <el-menu router :default-active="activeIndex" :collapse="this.$store.state.sideBarCollapse">
       <img src="../assets/tongji_logo.png" class="avatar"/>
 
-      <el-menu-item index="/">
+      <el-menu-item index="/chart">
         <i class="el-icon-menu"></i>
         <a slot="title">首页</a>
       </el-menu-item>

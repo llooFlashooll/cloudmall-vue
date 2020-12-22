@@ -33,12 +33,12 @@
                 label="商品id">
             </el-table-column>
             <el-table-column
-                prop="name"
-                label="商品名称">
-            </el-table-column>
-            <el-table-column
                 prop="num"
                 label="商品数量">
+            </el-table-column>
+            <el-table-column
+                prop="price"
+                label="商品售价">
             </el-table-column>
             </el-table>
       </el-col>
@@ -60,12 +60,15 @@ export default {
   methods:{
       search(){
         if(this.value.length>0){
+          this.table=[];
           console.log(this.value);
-          this.$axios.get()
+          this.$axios.get("/getStock?salerId="+this.value)
           .then(res=>{
             console.log(res.data);
-            if(res.data.icon!=null){
-              //this.tableData=
+            if(res.data.length>0){
+              for(var i=0;i<res.data.length;i++){
+                this.tableData.push({id:res.data[i].stock.product_id,num:res.data[i].stock.in_num,price:res.data[i].stock.price});
+              }
             }
             else{
               this.tableData=[]

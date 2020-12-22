@@ -11,6 +11,7 @@ import Suppiler from "@/views/Supplier";
 import StockRecord from "@/views/StockRecord";
 import StockCost from "@/views/StockCost";
 import StockCount from "@/views/StockCount";
+import Chart from "@/views/Chart";
 
 
 Vue.use(Router)
@@ -97,6 +98,13 @@ const routes = [{
             component:StockCount,
             meta:{
                 name:"进货输目"
+            }
+        },
+        {
+            path:"/chart",
+            component:Chart,
+            meta:{
+                name:"速率比较图"
             }
         }
     ]

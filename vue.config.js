@@ -48,18 +48,17 @@ module.exports = {
         port: 8080,
         https: false,
         hotOnly: false,
-        before: app => {}
-            /*         proxy: {
-                        '/api': {
-                            target: "https://www.wanandroid.com/",
-                            changeOrigin: true,
-                            ws: true,
-                            secure: false,
-                            pathRewrite: {
-                                '^/api': ''
-                            }
-                        }
-                    } */
+        before: app => {},
+        proxy: {
+            '/api': {
+                target: "http://98.126.219.155:13397",
+                changeOrigin: true,
+                ws: true,
+                pathRewrite: {
+                    '^/api': ''//这里理解成用‘/api’代替target里面的地址，后面组件中我们掉接口时直接用api代替 比如我要调用'http://40.00.100.100:3002/user/add'，直接写‘/api/user/add’即可
+                  }
+                }
+            } 
     },
     //  第三方插件配置
     pluginOptions: {

@@ -13,6 +13,7 @@ import './assets/css/global.css'
 
 
 Vue.prototype.$axios = axios
+axios.defaults.baseURL = '/api/hive2'  //关键代码
 Vue.prototype.$echarts = echarts
 Vue.use(ElementUI);
 Vue.use(mavonEditor)
