@@ -45,6 +45,7 @@
 </template>
 
 <script>
+//无mapreduce
 export default {
   data(){
     return{
@@ -78,7 +79,7 @@ export default {
           for(var i=0; i< this.resData.length; i++) {
             var temp = {};
             temp.productId = this.value;
-            temp.comment = this.resData[i]["c0"];
+            temp.comment = this.resData[i]["comments"];
 
             this.tableData.push(temp);
 

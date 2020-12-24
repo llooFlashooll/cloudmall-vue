@@ -48,6 +48,7 @@
 </template>
 
 <script>
+//无mapreduce
 export default {
   data(){
     return{

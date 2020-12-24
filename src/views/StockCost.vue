@@ -56,6 +56,7 @@
 </template>
 
 <script>
+//第一次：20s 3min20s
 export default {
   data(){
     return{
@@ -85,7 +86,7 @@ export default {
             var temp = {};
             temp.salerId = this.value;
             temp.year = "2019";
-            temp.count = this.resData[i]["c0"];
+            temp.count = this.resData[i]["_c0"];
 
             this.tableData.push(temp);
 

@@ -54,6 +54,7 @@
 </template>
 
 <script>
+//第一轮：1min4s 16min30s
 export default {
   data(){
     return{
@@ -97,14 +98,13 @@ export default {
             var temp = {};
             temp.salerId = this.value_seller;
             temp.providerId = this.value_supplier;
-            temp.count = this.resData[i]["c0"];
+            temp.count = this.resData[i]["_c0"];
 
             this.tableData.push(temp);
 
           }
           console.log("tableData是：");
           console.log(this.tableData);
-
         })
         .catch(err=>{
         console.log(err);

@@ -60,6 +60,7 @@
 </template>
 
 <script>
+//无mapreduce
 export default {
   data(){
     return{
@@ -94,7 +95,7 @@ export default {
               temp.salerId = this.resData[i]["imports.saler_id"];
               temp.inNum = this.resData[i]["imports.in_num"];
               temp.importDate = this.resData[i]["imports.import_date"];
-              temp.price = this.resData[i]["imports.price"];
+              temp.price = parseFloat(this.resData[i]["imports.price"]).toFixed(2);
               temp.providerId = this.resData[i]["imports.provider_id"];
 
               this.tableData.push(temp);

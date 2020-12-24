@@ -44,6 +44,7 @@
 </template>
 
 <script>
+//第一次：1min2s 6min
 export default {
   data(){
     return{
@@ -74,7 +75,7 @@ export default {
             for(var i=0; i< this.resData.length; i++) {
               var temp = {};
               temp.date = this.date;
-              temp.count = this.resData[i]["c0"];
+              temp.count = this.resData[i]["_c0"];
 
               this.tableData.push(temp);
 
