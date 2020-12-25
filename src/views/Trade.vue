@@ -44,7 +44,7 @@
 </template>
 
 <script>
-//第一次：1min2s 6min
+//第一次：1min2s 6min  第二次：26s 3min20s
 export default {
   data(){
     return{
@@ -59,6 +59,7 @@ export default {
     chooseDate(){
         if(this.date.length>0){
         var dateArray=this.date.split("-");
+        console.log(dateArray[0]+"/"+dateArray[1]+"/"+dateArray[2])
         this.$axios.get("/getBillCount?date="+dateArray[0]+"/"+dateArray[1]+"/"+dateArray[2])
         .then(res=>{
             console.log(res.data);

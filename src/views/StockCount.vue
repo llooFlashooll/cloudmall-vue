@@ -54,7 +54,7 @@
 </template>
 
 <script>
-//第一轮：1min4s 16min30s
+//第一轮：1min4s 16min30s 第二轮：13s 5min30s
 export default {
   data(){
     return{

@@ -44,7 +44,7 @@
 </template>
 
 <script>
-//第一次：2min30s 10min11s
+//第一次：2min30s 10min11s  第二次：28s 1230s
 export default {
   data(){
     return{
